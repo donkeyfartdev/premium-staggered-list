@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blur Reveal Staggered List</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #050505;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 40px 20px;
+      color: white;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      background: linear-gradient(90deg, #00f5ff, #a855f7, #f472b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      color: #71717a;
+      font-size: 15px;
+      margin-bottom: 32px;
+    }
+
+    .list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .list-item {
+      background: linear-gradient(145deg, #161616, #0d0d0d);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      opacity: 0;
+      filter: blur(10px);
+      transform: translateY(16px);
+      animation: blurReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .list-item:nth-child(1) { animation-delay: 0.05s; }
+    .list-item:nth-child(2) { animation-delay: 0.18s; }
+    .list-item:nth-child(3) { animation-delay: 0.31s; }
+    .list-item:nth-child(4) { animation-delay: 0.44s; }
+    .list-item:nth-child(5) { animation-delay: 0.57s; }
+
+    .icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+      background: rgba(168, 85, 247, 0.1);
+      border: 1px solid rgba(168, 85, 247, 0.2);
+    }
+
+    .content {
+      flex: 1;
+    }
+
+    .title {
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 2px;
+    }
+
+    .desc {
+      color: #71717a;
+      font-size: 13.5px;
+    }
+
+    .badge {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(0, 245, 255, 0.1);
+      color: #00f5ff;
+      border: 1px solid rgba(0, 245, 255, 0.2);
+    }
+
+    @keyframes blurReveal {
+      to {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Blur Reveal</h1>
+    <p class="subtitle">Staggered entrance with soft blur-to-sharp transition</p>
+
+    <ul class="list">
+      <li class="list-item">
+        <div class="icon">✨</div>
+        <div class="content">
+          <div class="title">Soft Focus</div>
+          <div class="desc">Items start blurred and sharpen into view</div>
+        </div>
+        <div class="badge">0.05s</div>
+      </li>
+      <li class="list-item">
+        <div class="icon">👁</div>
+        <div class="content">
+          <div class="title">Premium Depth</div>
+          <div class="desc">Blur adds a layered, high-end feel</div>
+        </div>
+        <div class="badge">0.18s</div>
+      </li>
+      <li class="list-item">
+        <div class="icon">🎯</div>
+        <div class="content">
+          <div class="title">Gentle Rise</div>
+          <div class="desc">Combined with a light upward motion</div>
+        </div>
+        <div class="badge">0.31s</div>
+      </li>
+      <li class="list-item">
+        <div class="icon">⚡</div>
+        <div class="content">
+          <div class="title">Staggered Timing</div>
+          <div class="desc">Each item reveals slightly after the last</div>
+        </div>
+        <div class="badge">0.44s</div>
+      </li>
+      <li class="list-item">
+        <div class="icon">🚀</div>
+        <div class="content">
+          <div class="title">Pure CSS</div>
+          <div class="desc">No JavaScript — just animation and delays</div>
+        </div>
+        <div class="badge">0.57s</div>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
