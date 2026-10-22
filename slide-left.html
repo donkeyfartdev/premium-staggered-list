@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide Left Staggered List</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh; background: #050505;
+      display: flex; align-items: center; justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 40px 20px; color: white;
+    }
+    .container { width: 100%; max-width: 480px; }
+    h1 {
+      font-size: 28px; font-weight: 700; margin-bottom: 8px;
+      background: linear-gradient(90deg, #00f5ff, #a855f7, #f472b6);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .subtitle { color: #71717a; font-size: 15px; margin-bottom: 32px; }
+    .list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .list-item {
+      background: linear-gradient(145deg, #161616, #0d0d0d);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px; padding: 18px 20px;
+      display: flex; align-items: center; gap: 16px;
+      opacity: 0; transform: translateX(-28px);
+      animation: slideLeft 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+    }
+    .list-item:nth-child(1) { animation-delay: 0.08s; }
+    .list-item:nth-child(2) { animation-delay: 0.20s; }
+    .list-item:nth-child(3) { animation-delay: 0.32s; }
+    .list-item:nth-child(4) { animation-delay: 0.44s; }
+    .list-item:nth-child(5) { animation-delay: 0.56s; }
+    .icon {
+      width: 42px; height: 42px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+      background: rgba(244, 114, 182, 0.1);
+      border: 1px solid rgba(244, 114, 182, 0.2);
+    }
+    .content { flex: 1; }
+    .title { font-weight: 600; font-size: 16px; margin-bottom: 2px; }
+    .desc { color: #71717a; font-size: 13.5px; }
+    .badge {
+      font-size: 12px; font-weight: 600; padding: 4px 10px;
+      border-radius: 999px; background: rgba(251, 191, 36, 0.1);
+      color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.2);
+    }
+    @keyframes slideLeft {
+      to { opacity: 1; transform: translateX(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Slide Left</h1>
+    <p class="subtitle">Directional entrance from the left</p>
+    <ul class="list">
+      <li class="list-item">
+        <div class="icon">→</div>
+        <div class="content">
+          <div class="title">Directional</div>
+          <div class="desc">Items slide in from the left</div>
+        </div>
+        <div class="badge">Left</div>
+      </li>
+      <li class="list-item">
+        <div class="icon">⚡</div>
+        <div class="content">
+          <div class="title">Snappy</div>
+          <div class="desc">Faster timing than scale or blur</div>
+        </div>
+        <div class="badge">0.6s</div>
+      </li>
+      <li class="list-item">
+        <div class="icon">🎯</div>
+        <div class="content">
+          <div class="title">Clear Motion</div>
+          <div class="desc">Works well for menus and side content</div>
+        </div>
+        <div class="badge">Slide</div>
+      </li>
+      <li class="list-item">
+        <div class="icon">📋</div>
+        <div class="content">
+          <div class="title">Staggered</div>
+          <div class="desc">Sequential delays create flow</div>
+        </div>
+        <div class="badge">Flow</div>
+      </li>
+      <li class="list-item">
+        <div class="icon">🚀</div>
+        <div class="content">
+          <div class="title">Pure CSS</div>
+          <div class="desc">Simple and reliable on any device</div>
+        </div>
+        <div class="badge">Clean</div>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
