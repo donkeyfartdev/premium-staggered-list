@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blur Reveal — React (Mobile)</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      background: #050505;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 40px 20px;
+      color: white;
+    }
+    .container { width: 100%; max-width: 480px; }
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      background: linear-gradient(90deg, #00f5ff, #a855f7, #f472b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .subtitle { color: #71717a; font-size: 15px; margin-bottom: 32px; }
+    .list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .list-item {
+      background: linear-gradient(145deg, #161616, #0d0d0d);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      opacity: 0;
+      filter: blur(10px);
+      transform: translateY(16px);
+      animation: blurReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+    }
+    .icon {
+      width: 42px; height: 42px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+      background: rgba(168, 85, 247, 0.1);
+      border: 1px solid rgba(168, 85, 247, 0.2);
+    }
+    .content { flex: 1; }
+    .title { font-weight: 600; font-size: 16px; margin-bottom: 2px; }
+    .desc { color: #71717a; font-size: 13.5px; }
+    .badge {
+      font-size: 12px; font-weight: 600; padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(0, 245, 255, 0.1);
+      color: #00f5ff;
+      border: 1px solid rgba(0, 245, 255, 0.2);
+    }
+    @keyframes blurReveal {
+      to { opacity: 1; filter: blur(0); transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script>
+    const items = [
+      { icon: "✨", title: "Soft Focus", desc: "Items start blurred and sharpen into view", delay: 0.6 },
+      { icon: "👁", title: "Premium Depth", desc: "Blur adds a layered, high-end feel", delay: 0.78 },
+      { icon: "🎯", title: "Gentle Rise", desc: "Combined with a light upward motion", delay: 0.96 },
+      { icon: "⚡", title: "Staggered Timing", desc: "Each item reveals slightly after the last", delay: 1.14 },
+      { icon: "🚀", title: "Pure React", desc: "Mobile-friendly — no Babel", delay: 1.32 },
+    ];
+
+    function StaggeredList() {
+      return React.createElement("div", { className: "container" },
+        React.createElement("h1", null, "Blur Reveal"),
+        React.createElement("p", { className: "subtitle" }, "React version — mobile friendly"),
+        React.createElement("ul", { className: "list" },
+          items.map(function(item, i) {
+            return React.createElement("li", {
+              key: i,
+              className: "list-item",
+              style: { animationDelay: item.delay + "s" }
+            },
+              React.createElement("div", { className: "icon" }, item.icon),
+              React.createElement("div", { className: "content" },
+                React.createElement("div", { className: "title" }, item.title),
+                React.createElement("div", { className: "desc" }, item.desc)
+              ),
+              React.createElement("div", { className: "badge" }, item.delay + "s")
+            );
+          })
+        )
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(React.createElement(StaggeredList));
+  </script>
+</body>
+</html>
